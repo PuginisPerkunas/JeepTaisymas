@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Jeep Control</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bootstrap.css">
+        <script src="jquery-3.2.1.min.js"></script>
+        <script src="jquery.ajax-cross-origin.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#btn_slow").click(function(e){
+                    e.preventDefault();
+                    var request = $.ajax({
+                        crossOrigin: true,
+                        type: "GET",
+                        url: "webresources/jeep/engine/slowspeed"
+                    });
+                    request.done(function(data){
+                        $('#responseDiv').html(data.speed);
+                        console.log(data);
+                    });
+                    request.fail(function(data, textStatus){
+                        console.log(data);
+                        console.log(textStatus);
+                    });
+                });
+            });   
+            $(document).ready(function(){
+                $("#btn_medium").click(function(e){
+                    e.preventDefault();
+                    var request = $.ajax({
+                        type: "GET",
+                        url: "webresources/jeep/engine/mediumspeed"
+                    });
+                    request.done(function(data){
+                        $('#responseDiv').html(data.speed);
+                        console.log(data);
+                    });
+                    request.fail(function(data, textStatus){
+                        console.log(data);
+                        console.log(textStatus);
+                    });
+                });
+            });
+            $(document).ready(function(){
+                $("#btn_fast").click(function(e){
+                    e.preventDefault();
+                    var request = $.ajax({
+                        type: "GET",
+                        url: "webresources/jeep/engine/fastspeed"
+                    });
+                    request.done(function(data){
+                        $('#responseDiv').html(data.speed);
+                        console.log(data);
+                    });
+                    request.fail(function(data, textStatus){
+                        console.log(data);
+                        console.log(textStatus);
+                    });
+                });
+            });
+            $(document).ready(function(){
+                $("#btn_full").click(function(e){
+                    e.preventDefault();
+                    var request = $.ajax({
+                        type: "GET",
+                        url: "webresources/jeep/engine/fullspeed"
+                    });
+                    request.done(function(data){
+                        $('#responseDiv').html(data.speed);
+                        console.log(data);
+                    });
+                    request.fail(function(data, textStatus){
+                        console.log(data);
+                        console.log(textStatus);
+                    });
+                });
+            });
+            $(document).ready(function(){
+                $("#btn_stop").click(function(e){
+                    e.preventDefault();
+                    var request = $.ajax({
+                        crossOrigin: true,
+                        type: "GET",
+                        url: "webresources/jeep/engine/stop"
+                    });
+                    request.done(function(data){
+                        $('#responseDiv').html(data.speed);
+                        console.log(data);
+                    });
+                    request.fail(function(data, textStatus){
+                        console.log(data);
+                        console.log(textStatus);
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="centered text-center"><h4>Džipo valdymo skydas</h4></div>
+        </div>
+        <div class="container">
+            <button class="btn btn-slow-speed btn-block" type="button" id="btn_slow">Lėtai</button>
+            <button class="btn btn-medium-speed btn-block" type="button" id="btn_medium">Vidutiniškai</button>
+            <button class="btn btn-fast-speed btn-block" type="button" id="btn_fast">Greitai</button>
+            <button class="btn btn-full-speed btn-block" type="button" id="btn_full">Pilnu greičiu</button>
+        </div>
+        <div class="container panel">
+            <button class="btn btn-danger btn-block" type="button" id="btn_stop">Stabdyti</button>
+        </div>
+        <div class="container panel">
+            <button class="btn btn-forward btn-block" type="button" id="btn_stop">Į priekį</button>
+        </div>
+        <div class="container">
+            <div class="row panel">
+                <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <button class="btn btn-left btn-block" type="button" id="btn_left">Į kairę</button>
+                </div>
+                <div class="col-lg-6 col-sm-6 col-xs-6">
+                    <button class="btn btn-left btn-block" type="button" id="btn_right">Į dešinę</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <button class="btn btn-forward btn-block" type="button" id="btn_stop">Atgal</button>
+        </div>
+        <div class="container" id="responseDiv">
+            
+        </div>
+    </body>
+</html>
